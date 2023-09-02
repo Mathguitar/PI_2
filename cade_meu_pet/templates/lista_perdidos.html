@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Animais Perdidos</title>
+     <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .filters label, <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .filters label,
+        .filters select {
+            margin-right: 10px;
+        }
+        
+        .filters button {
+            margin-left: 10px;
+            padding: 5px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .filters button:hover {
+            background-color: #0056b3;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .button-container a {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .button-container a:hover {
+            background-color: #0056b3;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        table th,
+        table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Animais Perdidos</h1>
+    
+    <div class="filters">
+        <form method="GET" action="{% url 'lista_perdidos' %}">
+            <label for="especie">Espécie:</label>
+            <select name="especie" id="especie">
+                <option value="">Todas as espécies</option>
+                {% for especie in especies %}
+                    <option value="{{ especie }}">{{ especie }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="raca">Raça:</label>
+            <select name="raca" id="raca">
+                <option value="">Todas as raças</option>
+                {% for raca in racas %}
+                    <option value="{{ raca }}">{{ raca }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="cor">Cor:</label>
+            <select name="cor" id="cor">
+                <option value="">Todas as cores</option>
+                {% for cor in cores %}
+                    <option value="{{ cor }}">{{ cor }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="data">Data:</label>
+            <select name="data" id="data">
+                <option value="">Todas as datas</option>
+                {% for data in datas %}
+                    <option value="{{ data }}">{{ data }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="local">Local:</label>
+            <select name="local" id="local">
+                <option value="">Todos os locais</option>
+                {% for local in locais %}
+                    <option value="{{ local }}">{{ local }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Filtrar</button>
+            <a href="http://127.0.0.1:8000/" class="button"><button type="button">Voltar</button></a>
+        </form>       
+    </div>  
+
+    <table>
+        <tr>
+            <th>Nome do Animal</th>
+            <th>Espécie</th>
+            <th>Raça</th>
+            <th>Cor</th>
+            <th>Descrição</th>
+            <th>Data Perdido</th>
+            <th>Local Perdido</th>
+            <th>Perdido por</th>
+            <th>Telefone</th>
+            <th>Foto</th>
+        </tr>
+        {% for animal in animais_perdidos %}
+            <tr>
+                <td>{{ animal.nome }}</td>
+                <td>{{ animal.especie }}</td>
+                <td>{{ animal.raca }}</td>
+                <td>{{ animal.cor }}</td>
+                <td>{{ animal.descricao }}</td>
+                <td>{{ animal.data_perdido }}</td>
+                <td>{{ animal.local_perdido }}</td>
+                <td>{{ animal.nome_perdeu }}</td>
+                <td>{{ animal.tel_perdeu }}</td>
+                <td><img src="{{ animal.foto_perdido.url }}" alt="Baixar Foto" width="100"></td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
+               

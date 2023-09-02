@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Busca de Animais - Cade Meu Pet</title>
+    <style>
+      /* Estilos CSS */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48vh;
+      }
+      
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      
+      h1 {
+        color: #333;
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+      
+      p {
+        color: #777;
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+      
+      .buttons-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+      }
+      
+      .button {
+        margin: 0 10px;
+      }
+      
+      .button a {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #007bff;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+      
+      .button a:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Cade Meu Pet?</h1>
+      <p>Selecione uma opção abaixo:</p>
+      <div class="buttons-container">
+        <div class="button">
+          <a href="{% url 'encontrados' %}">Cadastrar um animal encontrado</a>
+        </div>
+        <div class="button">
+          <a href="{% url 'perdidos' %}">Cadastrar um animal perdido</a>
+        </div>
+      </div>
+      <div class="buttons-container">
+        <div class="button">
+          <a href="{% url 'lista_encontrados' %}">Lista de animais encontrados</a>
+        </div>
+        <div class="button">
+          <a href="{% url 'lista_perdidos' %}">Lista de animais perdidos</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      // JavaScript
+      const buttonsContainer = document.querySelectorAll('.buttons-container');
+      const buttons = buttonsContainer.querySelectorAll('.button');
+      
+      buttons.forEach(button => {
+        button.style.marginBottom = '10px';
+      });
+    </script>
+  </body>
+</html>
+
